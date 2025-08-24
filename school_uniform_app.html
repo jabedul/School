@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>School Uniform Requirements</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        select, ul { font-size: 1.2em; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>School Uniform Requirements</h1>
+    <label for="schoolSelect">Select a School:</label>
+    <select id="schoolSelect" onchange="updateItems()">
+        <option value='OAKLANDS'>OAKLANDS</option>
+        <option value='MORPETH'>MORPETH</option>
+        <option value='RAINES'>RAINES</option>
+        <option value='HARRIS X'>HARRIS X</option>
+        <option value='VIRGINIA'>VIRGINIA</option>
+
+    </select>
+    <h2>Required Items:</h2>
+    <ul id="itemList"></ul>
+
+    <script>
+        const schoolData = {
+            'OAKLANDS': ['Jumper', 'Blazer', 'Tie', 'Pe t shirt', 'Pe bottoms', 'Pe Shorts', '1/4 Zip', 'Sweater', 'Polo', 'Black trouser', 'Shirt/Blouse'],
+            'MORPETH': ['Jumper', 'Blazer', 'Tie', 'Pe t shirt', 'Pe bottoms', 'Pe Shorts', '1/4 Zip', 'Sweater', 'Polo', 'Black trouser', 'Shirt/Blouse'],
+            'RAINES': ['Jumper', 'Blazer', 'Tie', 'Pe t shirt', 'Pe bottoms', 'Pe Shorts', '1/4 Zip', 'Sweater', 'Polo', 'Black trouser', 'Shirt/Blouse'],
+            'HARRIS X': ['Jumper', 'Blazer', 'Tie', 'Pe t shirt', 'Pe bottoms', 'Pe Shorts', '1/4 Zip', 'Sweater', 'Polo', 'Grey Trouser', 'Shirt/Blouse'],
+            'VIRGINIA': ['Jumper', 'Schools Bag', 'Gym bag', 'Polo', 'Grey Trouser', 'Shirt/Blouse'],
+
+        };
+
+        function updateItems() {
+            const school = document.getElementById('schoolSelect').value;
+            const items = schoolData[school];
+            const itemList = document.getElementById('itemList');
+            itemList.innerHTML = '';
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                itemList.appendChild(li);
+            });
+        }
+
+        // Initialize with first school
+        window.onload = updateItems;
+    </script>
+</body>
+</html>
