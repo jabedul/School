@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-  <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>School Uniform Selector</title>
   <style>
     body {
@@ -12,7 +12,8 @@
       margin: auto;
       background-color: #f9f9f9;
     }
-   -align: center;
+    h1 {
+      text-align: center;
       margin-bottom: 30px;
     }
     select {
@@ -26,8 +27,7 @@
       justify-content: space-around;
       margin-bottom: 20px;
     }
-    .legend div {
-      padding: 5px 10px;
+         padding: 5px 10px;
       border-radius: 5px;
       color: white;
       font-weight: bold;
@@ -57,38 +57,59 @@
 </head>
 <body>
   <h1>Select School Uniform</h1>
-  <select id='schoolDropdown'></select>
-  <div class='legend'>
-    <div class='required-legend'>Required</div>
-    <div class='additional-legend'>Additional</div>
+  <select id="schoolDropdown"></select>
+  <div class="legend">
+    <div class="required-legend">Required</div>
+    <div class="additional-legend">Additional</div>
   </div>
-  <div id='uniformItems'></div>
+  <div id="uniformItems"></div>
   <script>
-    const schoolData = { /* full dataset with 25 schools */ };
+    const schoolData = {
+      "Ashwood Academy": { "Blazer": "required", "Tie": "required", "Sweater": "required", "Polo": "additional", "PE T Shirt": "required", "PE Shorts": "required", "PE 1/4 Zip": "required", "Fleece": "additional", "Book bag": "additional", "Gym bag": "additional" },
+      "Elmhurst College": { "Jumper": "required", "Blazer": "required", "Tie": "required", "Sweater": "required", "Polo": "additional", "PE T Shirt": "required", "PE Pants": "required", "PE Shorts": "required", "PE 1/4 Zip": "required", "Book bag": "additional", "Grey trouser/Skirt": "additional", "Fleece": "additional" },
+      "Northgate High": { "Logo'd School skirt": "required", "Jumper": "required", "Blazer": "required", "Tie": "required", "Sweater": "required", "Polo": "additional", "PE Pants": "required", "PE Shorts": "required", "PE 1/4 Zip": "required", "Shirt/Blouse": "additional", "Black trouser/Skirt": "additional", "Grey trouser/Skirt": "additional", "Book bag": "additional" },
+      "Willowbrook School": { "Jumper": "required", "Blazer": "required", "Tie": "required", "PE T Shirt": "required", "PE Shorts": "required", "PE 1/4 Zip": "required", "Book bag": "required", "Shirt/Blouse": "additional", "Black trouser/Skirt": "additional", "Grey trouser/Skirt": "additional", "Polo": "additional", "Gym bag": "additional" },
+      "Cedar Valley Prep": { "Logo'd School skirt": "required", "Jumper": "required", "Blazer": "required", "Tie": "required", "Sweater": "required", "PE Shorts": "required", "Book bag": "additional", "Black trouser/Skirt": "additional", "Fleece": "additional" },
+      "Maple Ridge Institute": { "Blazer": "required", "Tie": "required", "Sweater": "required", "PE T Shirt": "required", "PE Pants": "required", "PE Shorts": "required", "Book bag": "required", "Gym bag": "additional", "Polo": "additional" },
+      "Silverlake Grammar": { "Logo'd School skirt": "required", "Jumper": "required", "Tie": "required", "Sweater": "required", "PE T Shirt": "required", "PE Shorts": "required", "Book bag": "required", "Fleece": "additional", "Gym bag": "additional" },
+      "Brighton Hill School": { "Blazer": "required", "Tie": "required", "Sweater": "required", "PE Pants": "required", "PE Shorts": "required", "Book bag": "required", "Polo": "additional", "Fleece": "additional" },
+      "Lakeside Academy": { "Jumper": "required", "Blazer": "required", "Tie": "required", "PE T Shirt": "required", "PE Shorts": "required", "Book bag": "required", "Black trouser/Skirt": "additional", "Gym bag": "additional" },
+      "Greenfield High": { "Logo'd School skirt": "required", "Jumper": "required", "Blazer": "required", "Tie": "required", "Sweater": "required", "PE Pants": "required", "PE Shorts": "required", "Book bag": "required", "Polo": "additional" },
+      "Oakridge School": { "Blazer": "required", "Tie": "required", "Sweater": "required", "PE T Shirt": "required", "PE Shorts": "required", "Book bag": "required", "Fleece": "additional" },
+      "Riverbend College": { "Jumper": "required", "Blazer": "required", "Tie": "required", "PE Pants": "required", "PE Shorts": "required", "Book bag": "required", "Gym bag": "additional" },
+      "Hillcrest Academy": { "Logo'd School skirt": "required", "Jumper": "required", "Tie": "required", "Sweater": "required", "PE T Shirt": "required", "PE Shorts": "required", "Book bag": "required", "Polo": "additional" },
+      "Brookstone High": { "Blazer": "required", "Tie": "required", "Sweater": "required", "PE Pants": "required", "PE Shorts": "required", "Book bag": "required", "Fleece": "additional" },
+      "Pinehill School": { "Jumper": "required", "Blazer": "required", "Tie": "required", "PE T Shirt": "required", "PE Shorts": "required", "Book bag": "required", "Gym bag": "additional" },
+      "Westwood Prep": { "Logo'd School skirt": "required", "Jumper": "required", "Tie": "required", "Sweater": "required", "PE Pants": "required", "PE Shorts": "required", "Book bag": "required", "Polo": "additional" },
+      "Fairview Grammar": { "Blazer": "required", "Tie": "required", "Sweater": "required", "PE T Shirt": "required", "PE Shorts": "required", "Book bag": "required", "Fleece": "additional" },
+      "Stonebridge School": { "Jumper": "required", "Blazer": "required", "Tie": "required", "PE Pants": "required", "PE Shorts": "required", "Book bag": "required", "Gym bag": "additional" },
+      "Meadowbrook High": { "Logo'd School skirt": "required", "Jumper": "required", "Tie": "required", "Sweater": "required", "PE T Shirt": "required", "PE Shorts": "required", "Book bag": "required", "Polo": "additional" },
+      "Redwood Academy": { "Blazer": "required", "Tie": "required", "Sweater": "required", "PE Pants": "required", "PE Shorts": "required", "Book bag": "required", "Fleece": "additional" }
+    };
 
-    const dropdown = document.getElementById('schoolDropdown');
-    const itemContainer = document.getElementById('uniformItems');
+    const dropdown = document.getElementById("schoolDropdown");
+    const itemContainer = document.getElementById("uniformItems");
 
     Object.keys(schoolData).forEach(school => {
-      const option = document.createElement('option');
+      const option = document.createElement("option");
       option.value = school;
       option.textContent = school;
       dropdown.appendChild(option);
     });
 
-    dropdown.addEventListener('change', () => {
+    dropdown.addEventListener("change", () => {
       const selectedSchool = dropdown.value;
       const items = schoolData[selectedSchool];
-      itemContainer.innerHTML = '';
+      itemContainer.innerHTML = "";
       Object.entries(items).forEach(([item, type]) => {
-        const div = document.createElement('div');
+        const div = document.createElement("div");
         div.textContent = item;
         div.className = `item ${type}`;
         itemContainer.appendChild(div);
       });
     });
 
-    dropdown.dispatchEvent(new Event('change'));
+    dropdown.dispatchEvent(new Event("change"));
   </script>
 </body>
 </html>
