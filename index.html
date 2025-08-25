@@ -1,68 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>School Uniform Requirements</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        select, ul { font-size: 1.2em; margin-top: 10px; }
-        .required { color: green; }
-        .optional { color: orange; }
-    </style>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>School Uniform Selector</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+  h1 { text-align: center; }
+  select { width: 100%; padding: 10px; margin-bottom: 20px; font-size: 16px; }
+  .item { padding: 10px; border-radius: 5px; color: white; margin-bottom: 5px; }
+  .required { background-color: green; }
+  .additional { background-color: orange; }
+</style>
 </head>
 <body>
-    <h1>School Uniform Requirements</h1>
-    <label for='schoolSelect'>Select a School:</label>
-    <select id='schoolSelect' onchange='updateItems()'>
-        <option value='Oaklands'>Oaklands</option>
-        <option value='Morpeth'>Morpeth</option>
-        <option value='Raines'>Raines</option>
-        <option value='Harris x'>Harris x</option>
-        <option value='Virginia'>Virginia</option>
-    </select>
+<h1>Select School Uniform</h1>
+<select id='schoolDropdown'></select>
+<div id='uniformItems'></div>
+<script>
+  const schoolData = {
+    "Oaklands": {
+      "Jumper": "required", "Blazer": "required", "Tie": "required", "Sweater": "required", "Polo": "required",
+      "PE T Shirt": "required", "PE Pants": "required", "PE Shorts": "required", "PE 1/4 Zip": "required",
+      "Shirt/Blouse (Optional)": "additional", "Black trouser/Skirt (optional)": "additional",
+      "Fleece (Optional) ": "additional", "Book bag optional": "additional"
+    },
+    "Morpeth": {
+      "Logo'd School skirt": "required", "Jumper": "required", "Blazer": "required", "Tie": "required",
+      "Sweater": "required", "PE T Shirt": "required", "PE Pants": "required", "PE 1/4 Zip": "required",
+      "Shirt/Blouse (Optional)": "additional", "Black trouser/Skirt (optional)": "additional",
+      "Polo (Optional)": "additional", "Book bag optional": "additional"
+    },
+    "Raines": {
+      "Jumper": "required", "Blazer": "required", "Tie": "required", "Book bag": "required",
+      "Shirt/Blouse (Optional)": "additional", "Grey trouser/Skirt (optional)": "additional",
+      "Polo (Optional)": "additional"
+    },
+    "Harris x": {
+      "Logo'd School skirt": "required", "Jumper": "required", "Blazer": "required", "Tie": "required",
+      "Sweater": "required", "PE T Shirt": "required", "PE Pants": "required", "PE 1/4 Zip": "required",
+      "Book bag": "required", "Shirt/Blouse (Optional)": "additional", "Grey trouser/Skirt (optional)": "additional",
+      "Polo (Optional)": "additional", "Fleece (Optional) ": "additional"
+    },
+    "Virginia": {
+      "Jumper": "required", "Polo": "required", "Book bag": "required",
+      "Black trouser/Skirt (optional)": "additional", "Gym bag optional": "additional"
+    }
+  };
 
-    <h2>Required Items:</h2>
-    <ul id='requiredList'></ul>
-    <h2>Optional (Upsell) Items:</h2>
-    <ul id='optionalList'></ul>
+  const dropdown = document.getElementById('schoolDropdown');
+  const itemContainer = document.getElementById('uniformItems');
 
-    <script>
-        const schoolData = {
-            'Oaklands': {required: ["Jumper", "Blazer", "Tie", "Sweater", "Polo", "PE T Shirt", "PE Pants", "PE Shorts", "PE 1/4 Zip"], optional: ["Shirt/Blouse (Optional)", "Black trouser/Skirt (optional)", "Fleece (Optional)", "Book bag optional"]},
-            'Morpeth': {required: ["Logo'd School skirt", "Jumper", "Blazer", "Tie", "Sweater", "PE T Shirt", "PE Pants", "PE 1/4 Zip"], optional: ["Shirt/Blouse (Optional)", "Black trouser/Skirt (optional)", "Polo (Optional)", "Book bag optional"]},
-            'Raines': {required: ["Jumper", "Blazer", "Tie", "Book bag"], optional: ["Shirt/Blouse (Optional)", "Grey trouser/Skirt (optional)", "Polo (Optional)"]},
-            'Harris x': {required: ["Logo'd School skirt", "Jumper", "Blazer", "Tie", "Sweater", "PE T Shirt", "PE Pants", "PE 1/4 Zip", "Book bag"], optional: ["Shirt/Blouse (Optional)", "Grey trouser/Skirt (optional)", "Polo (Optional)", "Fleece (Optional)"]},
-            'Virginia': {required: ["Jumper", "Polo", "Book bag"], optional: ["Black trouser/Skirt (optional)", "Gym bag optional"]}
-        };
+  Object.keys(schoolData).forEach(school => {
+    const option = document.createElement('option');
+    option.value = school;
+    option.textContent = school;
+    dropdown.appendChild(option);
+  });
 
-        function updateItems() {
-            const school = document.getElementById('schoolSelect').value;
-            const required = schoolData[school].required;
-            const optional = schoolData[school].optional;
+  dropdown.addEventListener('change', () => {
+    const selectedSchool = dropdown.value;
+    const items = schoolData[selectedSchool];
+    itemContainer.innerHTML = '';
+    Object.entries(items).forEach(([item, type]) => {
+      const div = document.createElement('div');
+      div.textContent = item;
+      div.className = `item ${type}`;
+      itemContainer.appendChild(div);
+    });
+  });
 
-            const requiredList = document.getElementById('requiredList');
-            const optionalList = document.getElementById('optionalList');
-
-            requiredList.innerHTML = '';
-            optionalList.innerHTML = '';
-
-            required.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                li.className = 'required';
-                requiredList.appendChild(li);
-            });
-
-            optional.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                li.className = 'optional';
-                optionalList.appendChild(li);
-            });
-        }
-
-        window.onload = updateItems;
-    </script>
+  dropdown.dispatchEvent(new Event('change'));
+</script>
 </body>
 </html>
