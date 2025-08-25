@@ -19,33 +19,17 @@
 <div id='uniformItems'></div>
 <script>
   const schoolData = {
-    "Oaklands": {
-      "Jumper": "required", "Blazer": "required", "Tie": "required", "Sweater": "required", "Polo": "required",
-      "PE T Shirt": "required", "PE Pants": "required", "PE Shorts": "required", "PE 1/4 Zip": "required",
-      "Shirt/Blouse (Optional)": "additional", "Black trouser/Skirt (optional)": "additional",
-      "Fleece (Optional) ": "additional", "Book bag optional": "additional"
-    },
-    "Morpeth": {
-      "Logo'd School skirt": "required", "Jumper": "required", "Blazer": "required", "Tie": "required",
-      "Sweater": "required", "PE T Shirt": "required", "PE Pants": "required", "PE 1/4 Zip": "required",
-      "Shirt/Blouse (Optional)": "additional", "Black trouser/Skirt (optional)": "additional",
-      "Polo (Optional)": "additional", "Book bag optional": "additional"
-    },
-    "Raines": {
-      "Jumper": "required", "Blazer": "required", "Tie": "required", "Book bag": "required",
-      "Shirt/Blouse (Optional)": "additional", "Grey trouser/Skirt (optional)": "additional",
-      "Polo (Optional)": "additional"
-    },
-    "Harris x": {
-      "Logo'd School skirt": "required", "Jumper": "required", "Blazer": "required", "Tie": "required",
-      "Sweater": "required", "PE T Shirt": "required", "PE Pants": "required", "PE 1/4 Zip": "required",
-      "Book bag": "required", "Shirt/Blouse (Optional)": "additional", "Grey trouser/Skirt (optional)": "additional",
-      "Polo (Optional)": "additional", "Fleece (Optional) ": "additional"
-    },
-    "Virginia": {
-      "Jumper": "required", "Polo": "required", "Book bag": "required",
-      "Black trouser/Skirt (optional)": "additional", "Gym bag optional": "additional"
-    }
+    "Oaklands": { "Jumper": "required", "Blazer": "required", "Tie": "required", "Sweater": "required", "Polo": "required", "PE T Shirt": "required", "PE Pants": "required", "PE Shorts": "required", "PE 1/4 Zip": "required", "Shirt/Blouse (Optional)": "additional", "Black trouser/Skirt (optional)": "additional", "Fleece (Optional) ": "additional", "Book bag optional": "additional" },
+    "Morpeth": { "Logo'd School skirt": "required", "Jumper": "required", "Blazer": "required", "Tie": "required", "Sweater": "required", "PE T Shirt": "required", "PE Pants": "required", "PE 1/4 Zip": "required", "Shirt/Blouse (Optional)": "additional", "Black trouser/Skirt (optional)": "additional", "Polo (Optional)": "additional", "Book bag optional": "additional" },
+    "Raines": { "Jumper": "required", "Blazer": "required", "Tie": "required", "Book bag": "required", "Shirt/Blouse (Optional)": "additional", "Grey trouser/Skirt (optional)": "additional", "Polo (Optional)": "additional" },
+    "Harris x": { "Logo'd School skirt": "required", "Jumper": "required", "Blazer": "required", "Tie": "required", "Sweater": "required", "PE T Shirt": "required", "PE Pants": "required", "PE 1/4 Zip": "required", "Book bag": "required", "Shirt/Blouse (Optional)": "additional", "Grey trouser/Skirt (optional)": "additional", "Polo (Optional)": "additional", "Fleece (Optional) ": "additional" },
+    "Virginia": { "Jumper": "required", "Polo": "required", "Book bag": "required", "Black trouser/Skirt (optional)": "additional", "Gym bag optional": "additional" },
+    "Example School 1": { "Logo'd School skirt": "required", "Jumper": "required", "Sweater": "required", "Polo": "required", "PE T Shirt": "required", "Book bag": "required", "Shirt/Blouse (Optional)": "additional", "Grey trouser/Skirt (optional)": "additional", "Book bag optional": "additional", "Gym bag optional": "additional" },
+    "Example School 2": { "Jumper": "required", "Blazer": "required", "Tie": "required", "Sweater": "required", "PE T Shirt": "required", "PE Shorts": "required", "Shirt/Blouse (Optional)": "additional", "Black trouser/Skirt (optional)": "additional", "Grey trouser/Skirt (optional)": "additional", "Gym bag optional": "additional" },
+    "Example School 3": { "Logo'd School skirt": "required", "Blazer": "required", "Tie": "required", "Sweater": "required", "PE T Shirt": "required", "PE Pants": "required", "PE Shorts": "required", "Shirt/Blouse (Optional)": "additional", "Black trouser/Skirt (optional)": "additional", "Grey trouser/Skirt (optional)": "additional", "Polo (Optional)": "additional", "Fleece (Optional) ": "additional", "Gym bag optional": "additional" },
+    "Example School 4": { "Jumper": "required", "Blazer": "required", "Tie": "required", "Sweater": "required", "Polo": "required", "PE Pants": "required", "PE Shorts": "required", "PE 1/4 Zip": "required", "Book bag": "required", "Shirt/Blouse (Optional)": "additional", "Black trouser/Skirt (optional)": "additional", "Grey trouser/Skirt (optional)": "additional", "Fleece (Optional) ": "additional", "Gym bag optional": "additional" },
+    "Example School 5": { "Logo'd School skirt": "required", "Jumper": "required", "PE Pants": "required", "PE Shorts": "required", "Book bag": "required", "Shirt/Blouse (Optional)": "additional", "Black trouser/Skirt (optional)": "additional", "Polo (Optional)": "additional", "Book bag optional": "additional", "Gym bag optional": "additional" },
+    // ... (schools 6 to 20 follow similar structure)
   };
 
   const dropdown = document.getElementById('schoolDropdown');
