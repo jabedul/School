@@ -12,15 +12,28 @@
       margin: auto;
       background-color: #f9f9f9;
     }
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
+    header {
+     ;
+      margin-bottom: 20px;
+    }
+    header img {
+      height: 60px;
+    }
+    header h2 {
+      margin-top: 10px;
     }
     select {
       width: 100%;
       padding: 10px;
       margin-bottom: 20px;
       font-size: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: white;
+    }
+    button {
+      margin-bottom: 20px;
     }
     .legend {
       display: flex;
@@ -57,6 +70,9 @@
       padding: 15px;
       margin-bottom: 10px;
       color: white;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn 0.4s ease forwards;
     }
     .required {
       background-color: green;
@@ -64,10 +80,30 @@
     .additional {
       background-color: orange;
     }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    .dark-mode .item.required {
+      background-color: #2e7d32;
+    }
+    .dark-mode .item.additional {
+      background-color: #f57c00;
+    }
   </style>
 </head>
 <body>
-  <h1>Select School Uniform</h1>
+  <header>
+    <img src="your-logo-url.png" alt="Organization Logo">
+    <h2>Uniform Requirements Viewer – Staff Use Only</h2>
+  </header>
+  <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
   <select id="schoolDropdown"></select>
   <div class="legend">
     <div class="required-legend">Required</div>
@@ -93,7 +129,7 @@
         required: ["Jumper", "Blazer", "Tie", "Sweater", "PE Pants"],
         additional: ["Polo", "Fleece", "Book bag"]
       },
-      // ... Add all other schools here
+      // Add all other schools here...
     };
 
     const dropdown = document.getElementById("schoolDropdown");
@@ -129,6 +165,10 @@
     });
 
     dropdown.dispatchEvent(new Event("change"));
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
   </script>
 </body>
 </html>
