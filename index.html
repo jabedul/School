@@ -50,30 +50,4 @@
         };
 
         function updateItems() {
-            const school = document.getElementById('schoolSelect').value;
-            const required = schoolData[school].required;
-            const optional = schoolData[school].optional;
-
-            const requiredList = document.getElementById('requiredList');
-            const optionalList = document.getElementById('optionalList');
-
-            requiredList.innerHTML = '';
-            optionalList.innerHTML = '';
-
-            required.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                requiredList.appendChild(li);
-            });
-
-            optional.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                optionalList.appendChild(li);
-            });
-        }
-
-        window.onload = updateItems;
-    </script>
-</body>
-</html>
+            const
