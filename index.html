@@ -15,11 +15,11 @@
     <h1>School Uniform Requirements</h1>
     <label for='schoolSelect'>Select a School:</label>
     <select id='schoolSelect' onchange='updateItems()'>
-        <option value='OAKLANDS'>OAKLANDS</option>
-        <option value='MORPETH'>MORPETH</option>
-        <option value='RAINES'>RAINES</option>
-        <option value='HARRIS X'>HARRIS X</option>
-        <option value='VIRGINIA'>VIRGINIA</option>
+        <option value='Oaklands'>Oaklands</option>
+        <option value='Morpeth'>Morpeth</option>
+        <option value='Raines'>Raines</option>
+        <option value='Harris x'>Harris x</option>
+        <option value='Virginia'>Virginia</option>
     </select>
 
     <h2>Required Items:</h2>
@@ -29,26 +29,11 @@
 
     <script>
         const schoolData = {
-            'OAKLANDS': {
-                required: ["Jumper", "Blazer", "Tie", "Sweater", "Polo", "PE T Shirt", "PE Pants", "PE Shorts", "PE 1/4 Zip"],
-                optional: ["Shirt/Blouse (Optional)", "Black trouser/Skirt (optional)", "Fleece (Optional)", "Book bag optional"]
-            },
-            'MORPETH': {
-                required: ["Logo'd School skirt", "Jumper", "Blazer", "Tie", "Sweater", "PE T Shirt", "PE Pants", "PE 1/4 Zip"],
-                optional: ["Shirt/Blouse (Optional)", "Black trouser/Skirt (optional)", "Polo (Optional)", "Book bag optional"]
-            },
-            'RAINES': {
-                required: ["Jumper", "Blazer", "Tie", "Book bag"],
-                optional: ["Shirt/Blouse (Optional)", "Grey trouser/Skirt (optional)", "Polo (Optional)"]
-            },
-            'HARRIS X': {
-                required: ["Logo'd School skirt", "Jumper", "Blazer", "Tie", "Sweater", "PE T Shirt", "PE Pants", "PE 1/4 Zip", "Book bag"],
-                optional: ["Shirt/Blouse (Optional)", "Grey trouser/Skirt (optional)", "Polo (Optional)", "Fleece (Optional)"]
-            },
-            'VIRGINIA': {
-                required: ["Jumper", "Polo", "Book bag"],
-                optional: ["Black trouser/Skirt (optional)", "Gym bag optional"]
-            }
+            'Oaklands': {required: ["Jumper", "Blazer", "Tie", "Sweater", "Polo", "PE T Shirt", "PE Pants", "PE Shorts", "PE 1/4 Zip"], optional: ["Shirt/Blouse (Optional)", "Black trouser/Skirt (optional)", "Fleece (Optional)", "Book bag optional"]},
+            'Morpeth': {required: ["Logo'd School skirt", "Jumper", "Blazer", "Tie", "Sweater", "PE T Shirt", "PE Pants", "PE 1/4 Zip"], optional: ["Shirt/Blouse (Optional)", "Black trouser/Skirt (optional)", "Polo (Optional)", "Book bag optional"]},
+            'Raines': {required: ["Jumper", "Blazer", "Tie", "Book bag"], optional: ["Shirt/Blouse (Optional)", "Grey trouser/Skirt (optional)", "Polo (Optional)"]},
+            'Harris x': {required: ["Logo'd School skirt", "Jumper", "Blazer", "Tie", "Sweater", "PE T Shirt", "PE Pants", "PE 1/4 Zip", "Book bag"], optional: ["Shirt/Blouse (Optional)", "Grey trouser/Skirt (optional)", "Polo (Optional)", "Fleece (Optional)"]},
+            'Virginia': {required: ["Jumper", "Polo", "Book bag"], optional: ["Black trouser/Skirt (optional)", "Gym bag optional"]}
         };
 
         function updateItems() {
